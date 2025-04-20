@@ -4,6 +4,7 @@ const morgan = require('morgan');
 const colors = require('colors');
 const cookieParser = require('cookie-parser');
 const errorHandler = require('./middleware/error');
+const mongoSanitize = require('express-mongo-sanitize');
 
 const connectDB = require('./config/db');
 
@@ -29,6 +30,9 @@ const auth = require('./routes/auth');
 if (process.env.NODE_ENV === 'development') {
     app.use(morgan('dev'));
 }
+
+// Sanitize data
+app.use(mongoSanitize());
 
 // Router
 app.use('/api/v1/auth', auth);
