@@ -5,6 +5,8 @@ const colors = require('colors');
 const cookieParser = require('cookie-parser');
 const errorHandler = require('./middleware/error');
 const mongoSanitize = require('express-mongo-sanitize');
+const helmet = require('helmet');
+const xss = require('xss-clean');
 
 const connectDB = require('./config/db');
 
@@ -23,6 +25,9 @@ app.use(express.json());
 // Cookie parser
 app.use(cookieParser());
 
+// Prevent Cross Site Scripting
+app.use(xss());
+
 // Route files
 const auth = require('./routes/auth');
 
@@ -33,6 +38,9 @@ if (process.env.NODE_ENV === 'development') {
 
 // Sanitize data
 app.use(mongoSanitize());
+
+// Set security headers
+app.use(helmet());
 
 // Router
 app.use('/api/v1/auth', auth);
