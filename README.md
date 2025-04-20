@@ -35,7 +35,6 @@ The API allows users to register, and log in. It includes user authentication us
 -   [**helmet**](https://www.npmjs.com/package/helmet): For setting various HTTP headers to secure the app.
 -   [**jsonwebtoken**](https://www.npmjs.com/package/jsonwebtoken): For generating and verifying JWTs.
 -   [**mongoose**](https://www.npmjs.com/package/mongoose): For MongoDB object modeling.
--   [**xss-clean**](https://www.npmjs.com/package/xss-clean): For sanitizing user input.
 -   [**hpp**](https://www.npmjs.com/package/hpp): For prevention against HTTP Parameter Pollution
 
 ## Database
@@ -77,7 +76,6 @@ The API allows users to register, and log in. It includes user authentication us
 
 -   **Helmet**: Secures HTTP headers.
 -   **CORS**: Allows cross-origin requests from specific domains.
--   **XSS-Clean**: Prevents cross-site scripting attacks.
 -   **Express-Rate-Limit**: Limits the number of requests to prevent DDoS attacks.
 -   **HTTP Parameter Pollution**: Express middleware to protect against HTTP Parameter Pollution attacks.
 
