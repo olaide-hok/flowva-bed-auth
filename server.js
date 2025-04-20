@@ -14,6 +14,9 @@ connectDB();
 // Initialize App
 const app = express();
 
+// Body parser
+app.use(express.json());
+
 // Route files
 const auth = require('./routes/auth');
 
