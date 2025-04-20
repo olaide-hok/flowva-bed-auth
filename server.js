@@ -4,9 +4,8 @@ const morgan = require('morgan');
 const colors = require('colors');
 const cookieParser = require('cookie-parser');
 const errorHandler = require('./middleware/error');
-const mongoSanitize = require('express-mongo-sanitize');
 const helmet = require('helmet');
-const xss = require('xss-clean');
+
 const rateLimit = require('express-rate-limit');
 const hpp = require('hpp');
 const cors = require('cors');
@@ -28,8 +27,16 @@ app.use(express.json());
 // Cookie parser
 app.use(cookieParser());
 
-// Prevent Cross Site Scripting
-app.use(xss());
+// Route files
+const auth = require('./routes/auth');
+
+// Dev logging middleware (morgan)
+if (process.env.NODE_ENV === 'development') {
+    app.use(morgan('dev'));
+}
+
+// Set security headers
+app.use(helmet());
 
 // Rate Limiting
 const limiter = rateLimit({
@@ -44,20 +51,6 @@ app.use(hpp());
 
 // Enable CORS
 app.use(cors());
-
-// Route files
-const auth = require('./routes/auth');
-
-// Dev logging middleware (morgan)
-if (process.env.NODE_ENV === 'development') {
-    app.use(morgan('dev'));
-}
-
-// Sanitize data
-app.use(mongoSanitize());
-
-// Set security headers
-app.use(helmet());
 
 // Router
 app.use('/api/v1/auth', auth);
