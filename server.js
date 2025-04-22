@@ -41,7 +41,7 @@ app.use(helmet());
 
 // Rate Limiting
 const limiter = rateLimit({
-    windowMs: 10 * 60 * 1000, // 10 minutes
+    windowMs: 60 * 60 * 1000, // 60 minutes
     max: 100,
 });
 
@@ -70,3 +70,10 @@ app.listen(
         `server running in ${process.env.NODE_ENV} mode on port ${PORT}`
     )
 );
+
+// Handle unhandled promise rejections
+process.on('unhandledRejection', (err, promise) => {
+    console.log(`Error: ${err.message}`.red);
+    // Close server connection and exit process
+    server.close(() => process.exit(1));
+});
