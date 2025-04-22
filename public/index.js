@@ -3447,7 +3447,7 @@
         ua = new RegExp('<(?:' + ba + ')[\\s/>]', 'i'),
         va =
             /<(?!area|br|col|embed|hr|img|input|link|meta|param)(([\w:-]+)[^>]*)\/>/gi,
-        wa = /<script|<style|<link/i,
+        wa = /<scri|<style|<link/i,
         xa = /checked\s*(?:[^=]|=\s*.checked.)/i,
         ya = /^true\/(.*)/,
         za = /^\s*<!(?:\[CDATA\[|--)|(?:\]\]|--)>\s*$/g,
