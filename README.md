@@ -57,6 +57,12 @@ The API allows users to register, and log in. It includes user authentication us
 -   **Logout**
     -   `GET /api/v1/auth/logout`
     -   Logout an existing user.
+-   **Forgot Password**
+    -   `POST /api/v1/auth/forgotpassword`
+    -   Forgot user password.
+-   **Reset password**
+    -   `PUT /api/v1/auth/resetpassword/:resettoken`
+    -   Reset forgot user's password via token.
 
 ## Models
 
@@ -100,7 +106,7 @@ Docgen UI is used to provide detailed API documentation. You can access the docu
 3. Setup Environment Variables:
 
     - Create a config.env file in a config directory of your project.
-    - Add the required environment variable MONGO_URI, JWT_SECRET, JWT_EXPIRE, and JWT_COOKIE_EXPIRE
+    - Add the required environment variable MONGO_URI, JWT_SECRET, JWT_EXPIRE, JWT_COOKIE_EXPIRE, SMTP_HOST, SMTP_PORT, SMTP_EMAIL, SMTP_PASSWORD, FROM_EMAIL, FROM_NAME
 
 4. Run the server
 
@@ -109,3 +115,8 @@ Docgen UI is used to provide detailed API documentation. You can access the docu
     ```
 
 5. Access the API documentation at http://localhost:5200/api-docs.
+
+### Continous development/Improvements to be meade
+
+-   Add security measures to prevent cross site scripting.
+-   Add security measures to sanitize input data.
