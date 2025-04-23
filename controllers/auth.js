@@ -106,9 +106,7 @@ exports.forgotPassword = asyncHandler(async (req, res, next) => {
     await user.save({validateBeforeSave: false});
 
     // Create reset url
-    const resetUrl = `${req.protocol}://${req.get(
-        'host'
-    )}/reset-password/${resetToken}`;
+    const resetUrl = `${req.protocol}://flowva-fed.vercel.app/reset-password/${resetToken}`;
 
     const message = `You are receiving this email because you (or someone else) has requested the reset of your password. Here is the link to reset your password: \n\n ${resetUrl}`;
 
